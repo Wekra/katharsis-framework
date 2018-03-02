@@ -107,10 +107,9 @@ public class DefaultQuerySpecSerializerTest {
 
 		RegistryEntry entry = resourceRegistry.findEntry(Task.class);
 		String actualUrl = urlBuilder.buildUrl(entry.getResourceInformation(), null, querySpec);
-		String expectedUrl0 = "http://127.0.0.1/tasks/?filter[tasks][name][EQ]=value2&filter[tasks][name][EQ]=value1";
-		String expectedUrl1 = "http://127.0.0.1/tasks/?filter[tasks][name][EQ]=value1&filter[tasks][name][EQ]=value2";
-
-		Assert.assertTrue(expectedUrl0.equals(actualUrl) || expectedUrl1.equals(actualUrl));
+		String expectedUrl0 = "http://127.0.0.1/tasks/?filter[tasks][name][EQ]=value1%2Cvalue2";
+		
+		Assert.assertTrue(expectedUrl0.equals(actualUrl));
 	}
 
 	@Test

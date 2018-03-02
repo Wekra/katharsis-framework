@@ -58,9 +58,12 @@ public class DefaultQuerySpecSerializer implements QuerySpecSerializer {
 			if (filterSpec.getValue() instanceof Collection) {
 				Collection<?> col = (Collection<?>) filterSpec.getValue();
 				Set<String> values = new HashSet<>();
+				String value = "";
 				for (Object elem : col) {
-					values.add(serializeValue(elem));
+					value += serializeValue(elem) + ",";
 				}
+				value = value.substring(0, value.length() - 1);
+				values.add(serializeValue(value));
 				map.put(key, values);
 			}
 			else {
